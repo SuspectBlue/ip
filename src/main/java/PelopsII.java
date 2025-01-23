@@ -11,12 +11,13 @@ public class PelopsII {
 
         while (true) {
             String input = br.readLine();
-            System.out.println("Pelops II: " + input);
 
             if(input.equals("bye")) {
-                System.out.println("Bye. Hope to see you again soon!");
+                System.out.println("Pelops II: Bye. Hope to see you again soon!");
                 break;
             }
+
+            System.out.println("Pelops II: " + input);
         }
         // System.out.println("Running Java version: " + System.getProperty("java.version"));
         br.close();
