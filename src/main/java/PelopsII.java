@@ -22,7 +22,7 @@ public class PelopsII {
             while ((line = filereader.readLine()) != null) {
                 String[] tokens = line.split(" \\| ");
                 for(String i : tokens) {
-                    System.out.println(i);
+                    System.out.println(i); //
                 }
                 boolean isDone = tokens[1].equals("1");
                 if (tokens[0].equals("T")) {
