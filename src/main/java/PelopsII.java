@@ -1,4 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -11,12 +14,35 @@ import Tasks.ToDo;
 
 public class PelopsII {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String filePath = "./data/PelopsII.txt";
+        ArrayList<Task> list = new ArrayList<>();
 
+        try (BufferedReader filereader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = filereader.readLine()) != null) {
+                String[] tokens = line.split(" \\| ");
+                for(String i : tokens) {
+                    System.out.println(i);
+                }
+                boolean isDone = tokens[1].equals("1");
+                if (tokens[0].equals("T")) {
+                    list.add(new ToDo(isDone, tokens[2]));
+                } else if (tokens[0].equals("D")) {
+                    list.add(new Deadline(isDone, tokens[2], tokens[3]));
+                } else if (tokens[0].equals("E")) {
+                    list.add(new Event(isDone, tokens[2], tokens[3], tokens[4]));
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();
+        }
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
         System.out.println("Hello! I'm Pelops II");
         System.out.println("What can I do for you?");
 
-        ArrayList<Task> list = new ArrayList<>();
 
         while (true) {
             try {
@@ -33,11 +59,13 @@ public class PelopsII {
                 } else if (action[0].equals("mark") && action.length == 2 && isNumeric(action[1])) {
                     int index = Integer.parseInt(action[1]) - 1;
                     list.get(index).markAsDone();
+                    storeData(list);
                     System.out.println("Nice! I've marked this task as done:");
                     System.out.println(list.get(index));
                 } else if (action[0].equals("unmark") && action.length == 2 && isNumeric(action[1])) {
                     int index = Integer.parseInt(action[1]) - 1;
                     list.get(index).markAsNotDone();
+                    storeData(list);
                     System.out.println("OK, I've marked this task as not done yet:");
                     System.out.println(list.get(index));
                 } else if (action[0].equals("todo")) {
@@ -47,6 +75,7 @@ public class PelopsII {
                     String description = input.split("todo ")[1];
                     list.add(new ToDo(description));
                     int listSize = list.size();
+                    storeData(list);
                     System.out.println("Got it. I've added this task:");
                     System.out.println(list.get(listSize-1));
                     System.out.println("Now you have " + listSize + (listSize == 1 ? " task in the list." : " tasks in the list."));
@@ -59,6 +88,7 @@ public class PelopsII {
                     String byDate = data.split(" /by ")[1];
                     list.add(new Deadline(description, byDate));
                     int listSize = list.size();
+                    storeData(list);
                     System.out.println("Got it. I've added this task:");
                     System.out.println(list.get(listSize-1));
                     System.out.println("Now you have " + listSize + (listSize == 1 ? " task in the list." : " tasks in the list."));
@@ -72,6 +102,7 @@ public class PelopsII {
                     String toTime = data.split(" /to ")[1];
                     list.add(new Event(description, fromTime, toTime));
                     int listSize = list.size();
+                    storeData(list);
                     System.out.println("Got it. I've added this task:");
                     System.out.println(list.get(listSize-1));
                     System.out.println("Now you have " + listSize + (listSize == 1 ? " task in the list." : " tasks in the list."));
@@ -92,6 +123,7 @@ public class PelopsII {
                     }
                     System.out.println("Noted. I've removed this task:");
                     System.out.println(list.remove(index));
+                    storeData(list);
                     System.out.println("Now you have " + list.size() + (list.size() == 1 ? " task in the list." : " tasks in the list."));
                     
                 } else {
@@ -116,5 +148,15 @@ public class PelopsII {
             return false;
         }
         return true;
+    }
+
+    public static void storeData(ArrayList<Task> taskList) throws IOException {
+        String filePath = "./data/PelopsII.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for(Task task : taskList) {
+                writer.write(task.getDataString());
+                writer.newLine();
+            }
+        }
     }
 }
