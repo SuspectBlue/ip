@@ -1,4 +1,4 @@
-D | 1 | assignment 2 | Sunday 2359
 E | 0 | birthday for tom | 5pm | 11pm
 T | 1 | buy bread
 T | 0 | buy fish
+D | 1 | assignment 2 | 1 Feb 2025 7:30pm
