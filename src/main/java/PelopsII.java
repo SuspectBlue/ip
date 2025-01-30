@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import Exceptions.PelopsIIException;
 import Tasks.Deadline;
@@ -21,14 +23,13 @@ public class PelopsII {
             String line;
             while ((line = filereader.readLine()) != null) {
                 String[] tokens = line.split(" \\| ");
-                for(String i : tokens) {
-                    System.out.println(i); //
-                }
                 boolean isDone = tokens[1].equals("1");
                 if (tokens[0].equals("T")) {
                     list.add(new ToDo(isDone, tokens[2]));
                 } else if (tokens[0].equals("D")) {
-                    list.add(new Deadline(isDone, tokens[2], tokens[3]));
+                    LocalDateTime dateTime = LocalDateTime.parse(tokens[3], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
+                    System.out.println(dateTime);
+                    list.add(new Deadline(isDone, tokens[2], dateTime));
                 } else if (tokens[0].equals("E")) {
                     list.add(new Event(isDone, tokens[2], tokens[3], tokens[4]));
                 }
@@ -81,12 +82,13 @@ public class PelopsII {
                     System.out.println("Now you have " + listSize + (listSize == 1 ? " task in the list." : " tasks in the list."));
                 } else if (action[0].equals("deadline")) {
                     if(action.length == 1) {
-                        throw new PelopsIIException("Deadline tasks must include both a description and a specified deadline time. For example: deadline <description> /by <deadline>");
+                        throw new PelopsIIException("Deadline tasks must include both a description and a specified deadline time. For example: deadline <description> /by yyyy-MM-dd HHmm");
                     }
                     String data = input.split("deadline ")[1];
                     String description = data.split(" /by ")[0];
                     String byDate = data.split(" /by ")[1];
-                    list.add(new Deadline(description, byDate));
+                    LocalDateTime dateTime = LocalDateTime.parse(byDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+                    list.add(new Deadline(description, dateTime));
                     int listSize = list.size();
                     storeData(list);
                     System.out.println("Got it. I've added this task:");
