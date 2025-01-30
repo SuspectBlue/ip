@@ -1,0 +1,30 @@
+package command;
+
+import Exceptions.PelopsIIException;
+import Tasks.ToDo;
+
+public class TodoCommand extends Command {
+
+    private String description;
+    private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
+
+    public TodoCommand(String input) throws PelopsIIException {
+        String[] action = input.split(" ");
+        if (action.length == 1) {
+            throw new PelopsIIException("ToDo tasks require a description. For example: todo <description>");
+        }
+        this.description = input.split("todo ")[1];
+    }
+
+    @Override
+    public void execute() throws PelopsIIException {
+        ToDo todo = new ToDo(description);
+        this.taskList.addTask(todo);
+        this.storage.writeFile(taskList.getSaveData());
+        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE).append("\n")
+                                                            .append(todo).append("\n")
+                                                            .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        this.ui.showMessageToUser(sb.toString());
+    }
+    
+}

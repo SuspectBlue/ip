@@ -1,0 +1,7 @@
+E | 1 | birthday for tom | 5pm | 11pm
+T | 0 | buy fish
+D | 1 | ip | 31 Jan 2025 4:00pm
+E | 1 | birthday surprise lol | 4pm | 10pm
+T | 0 | sleep
+D | 1 | tomorrow's fun | 30 Apr 2025 2:15am
+E | 1 | bowling | 8pm | 10pm
