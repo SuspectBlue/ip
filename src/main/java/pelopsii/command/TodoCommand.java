@@ -1,7 +1,7 @@
-package command;
+package pelopsii.command;
 
-import Exceptions.PelopsIIException;
-import Tasks.ToDo;
+import pelopsii.exception.PelopsIIException;
+import pelopsii.task.ToDo;
 
 public class TodoCommand extends Command {
 

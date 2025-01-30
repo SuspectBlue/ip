@@ -1,7 +1,7 @@
-package command;
+package pelopsii.command;
 
-import Exceptions.PelopsIIException;
-import Tasks.Task;
+import pelopsii.exception.PelopsIIException;
+import pelopsii.task.Task;
 
 public class DeleteCommand extends Command{
     private int pos;

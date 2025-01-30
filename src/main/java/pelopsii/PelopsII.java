@@ -1,10 +1,12 @@
+package pelopsii;
 import java.io.IOException;
-import Exceptions.PelopsIIException;
-import Tasks.TaskList;
-import storage.Storage;
-import ui.Ui;
-import parser.Parser;
-import command.Command;
+
+import pelopsii.storage.Storage;
+import pelopsii.task.TaskList;
+import pelopsii.ui.Ui;
+import pelopsii.parser.Parser;
+import pelopsii.command.Command;
+import pelopsii.exception.PelopsIIException;
 
 public class PelopsII {
 
@@ -40,9 +42,5 @@ public class PelopsII {
             }
         }
         // System.out.println("Running Java version: " + System.getProperty("java.version"));
-    }
-
-    public static void main(String[] args) throws IOException {
-        new PelopsII("./src/main/java/data").run();
     }
 }

@@ -1,4 +1,4 @@
-package Tasks;
+package pelopsii.task;
 public class ToDo extends Task {
 
     public ToDo(String description) {

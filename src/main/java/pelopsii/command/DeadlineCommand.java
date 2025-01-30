@@ -1,10 +1,10 @@
-package command;
+package pelopsii.command;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import Exceptions.PelopsIIException;
-import Tasks.Deadline;
+import pelopsii.exception.PelopsIIException;
+import pelopsii.task.Deadline;
 
 public class DeadlineCommand extends Command {
 

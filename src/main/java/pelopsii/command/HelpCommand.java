@@ -1,6 +1,6 @@
-package command;
+package pelopsii.command;
 
-import Exceptions.PelopsIIException;
+import pelopsii.exception.PelopsIIException;
 
 public class HelpCommand extends Command {
 

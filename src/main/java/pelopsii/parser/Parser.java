@@ -1,16 +1,16 @@
-package parser;
+package pelopsii.parser;
 
-import Exceptions.PelopsIIException;
-import command.ByeCommand;
-import command.Command;
-import command.DeadlineCommand;
-import command.DeleteCommand;
-import command.EventCommand;
-import command.HelpCommand;
-import command.ListCommand;
-import command.MarkCommand;
-import command.TodoCommand;
-import command.UnmarkCommand;
+import pelopsii.command.ByeCommand;
+import pelopsii.command.Command;
+import pelopsii.command.DeadlineCommand;
+import pelopsii.command.DeleteCommand;
+import pelopsii.command.EventCommand;
+import pelopsii.command.HelpCommand;
+import pelopsii.command.ListCommand;
+import pelopsii.command.MarkCommand;
+import pelopsii.command.TodoCommand;
+import pelopsii.command.UnmarkCommand;
+import pelopsii.exception.PelopsIIException;
 
 public class Parser {
 

@@ -1,4 +1,4 @@
-package Tasks;
+package pelopsii.task;
 public class Task {
     protected String description;
     protected boolean isDone;

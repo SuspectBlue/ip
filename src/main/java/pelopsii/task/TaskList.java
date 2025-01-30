@@ -1,10 +1,10 @@
-package Tasks;
-
-import Exceptions.PelopsIIException;
+package pelopsii.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import pelopsii.exception.PelopsIIException;
 
 public class TaskList {
     private ArrayList<Task> taskList;

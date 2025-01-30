@@ -1,9 +1,9 @@
-package command;
+package pelopsii.command;
 
-import Exceptions.PelopsIIException;
-import Tasks.TaskList;
-import storage.Storage;
-import ui.Ui;
+import pelopsii.exception.PelopsIIException;
+import pelopsii.storage.Storage;
+import pelopsii.task.TaskList;
+import pelopsii.ui.Ui;
 
 public abstract class Command {
     protected TaskList taskList;

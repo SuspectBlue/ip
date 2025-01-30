@@ -1,7 +1,7 @@
-package command;
+package pelopsii.command;
 
-import Exceptions.PelopsIIException;
-import Tasks.Event;
+import pelopsii.exception.PelopsIIException;
+import pelopsii.task.Event;
 
 public class EventCommand extends Command{
     private String description;
