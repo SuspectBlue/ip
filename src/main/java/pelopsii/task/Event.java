@@ -1,4 +1,5 @@
 package pelopsii.task;
+
 public class Event extends Task {
 
     protected String from;
