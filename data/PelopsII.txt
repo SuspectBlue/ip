@@ -1,0 +1,4 @@
+T | 0 | buy bread
+E | 1 | birthday | 4pm | 6pm
+D | 0 | assignment | 1 Feb 2025 6:00pm
+D | 1 | buy votes | 22 Feb 2025 7:00pm

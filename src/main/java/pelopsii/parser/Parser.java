@@ -5,6 +5,7 @@ import pelopsii.command.Command;
 import pelopsii.command.DeadlineCommand;
 import pelopsii.command.DeleteCommand;
 import pelopsii.command.EventCommand;
+import pelopsii.command.FindCommand;
 import pelopsii.command.HelpCommand;
 import pelopsii.command.ListCommand;
 import pelopsii.command.MarkCommand;
@@ -41,6 +42,9 @@ public class Parser {
             }
             case "delete" -> {
                 return new DeleteCommand(input);
+            }
+            case "find" -> {
+                return new FindCommand(input);
             }
             default -> {
                 return new HelpCommand();
