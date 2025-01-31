@@ -134,11 +134,26 @@ public class TaskList {
     }
 
     /**
-     * Returns a string containing the data of all tasks in the list,
-     * formatted for saving to a file.
+     * Finds tasks whose descriptions contain the specified keyword.
      *
-     * @return The string of task data.
+     * @param keyword The keyword to search for in task descriptions.
+     * @return A string containing the list of tasks whose descriptions contain the keyword,
+     *         or an empty string if no matching tasks are found. Each matching task is
+     *         preceded by its 1-based index in the task list, and is on a new line.
+     * @throws PelopsIIException If there is an error accessing or processing the task list.
      */
+    public String find(String keyword) throws PelopsIIException {
+        StringBuilder sb = new StringBuilder();
+        int counter = 1;
+        for(Task task : taskList) {
+            if(task.description.contains(keyword)) {
+                sb.append(counter + "." + task).append("\n");
+                counter++;
+            }
+        }
+        return sb.toString();
+    }
+
     public String getSaveData() {
         StringBuilder sb = new StringBuilder();
         for(Task task : taskList) {
