@@ -12,8 +12,18 @@ import pelopsii.command.TodoCommand;
 import pelopsii.command.UnmarkCommand;
 import pelopsii.exception.PelopsIIException;
 
+/**
+ * Parses user input and returns the corresponding Command object.
+ */
 public class Parser {
 
+    /**
+     * Parses the user input string and returns a Command object.
+     *
+     * @param input The user input string.
+     * @return A Command object corresponding to the user input.
+     * @throws PelopsIIException If the input cannot be parsed into a valid command.
+     */
     public static Command parse(String input) throws PelopsIIException {
         String[] action = input.split(" ");
         String command = action[0].toLowerCase();
