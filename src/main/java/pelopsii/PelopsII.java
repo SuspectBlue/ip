@@ -18,6 +18,7 @@ public class PelopsII {
         ui = new Ui();
         storageFile = new Storage(filePath);
         try {
+            storageFile.load();
             taskList = new TaskList(storageFile.readFile());
         } catch (PelopsIIException e) {
             ui.showLoadingError();

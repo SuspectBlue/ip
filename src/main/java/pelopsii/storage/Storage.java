@@ -20,7 +20,7 @@ public class Storage {
         try {
             File file = new File(filePath);
             if (!file.exists()) {
-                File directory = new File("./src/main/java/data");
+                File directory = new File(filePath);
                 if (!directory.exists()) {
                     directory.mkdirs();
                 }
@@ -52,7 +52,7 @@ public class Storage {
             }
             return sb.toString();
         } catch (IOException error) {
-            System.out.println("Error writing to the file");
+            System.out.println("Error reading the file");
         }
         return "";
     }

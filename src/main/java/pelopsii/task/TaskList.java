@@ -11,6 +11,7 @@ public class TaskList {
 
     public TaskList(String data) throws PelopsIIException {
         taskList = new ArrayList<>();
+        System.out.println(data);
         loadData(data);
     }
 
@@ -21,7 +22,9 @@ public class TaskList {
     private void loadData(String data) throws PelopsIIException {
             String[] tasks = data.split("\n");
             for (String task : tasks) {
+                if (task.equals("")) continue;
                 String[] tokens = task.split(" \\| ");
+                System.out.println("String 1" + task.toString());
                 boolean isDone = tokens[1].equals("1");
                 if (tokens[0].equals("T")) {
                     this.taskList.add(new ToDo(isDone, tokens[2]));
