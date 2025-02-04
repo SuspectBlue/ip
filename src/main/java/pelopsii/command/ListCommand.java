@@ -8,5 +8,10 @@ public class ListCommand extends Command {
     public void execute() throws PelopsIIException {
         this.ui.showMessageToUser(this.taskList.toString());
     }
+
+    @Override
+    public String getResponse() {
+        return this.taskList.toString();
+    }
     
 }

@@ -22,7 +22,13 @@ public class MarkCommand extends Command {
     public void execute() throws PelopsIIException {
         this.taskList.mark(pos);
         this.storage.writeFile(taskList.getSaveData());
-        this.ui.showMessageToUser(MARK_MESSAGE + "\n" + this.taskList.getTaskByPosition(pos));
+        this.response = MARK_MESSAGE + "\n" + this.taskList.getTaskByPosition(pos);
+        this.ui.showMessageToUser(this.response);
+    }
+
+    @Override
+    public String getResponse() {
+        return this.response;
     }
     
 }

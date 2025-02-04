@@ -10,6 +10,7 @@ public class EventCommand extends Command{
     private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
 
     public EventCommand(String input) throws PelopsIIException {
+        System.out.println(input);
         String[] action = input.split(" ");
         if (action.length == 1) {
             throw new PelopsIIException("Event tasks must include a description, event start time and event end time. For example: event <description> /from <start_time> /to <end_time>");
@@ -28,6 +29,12 @@ public class EventCommand extends Command{
         StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE).append("\n")
                                                             .append(event).append("\n")
                                                             .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
+    }
+
+    @Override
+    public String getResponse() {
+        return this.response;
     }
 }

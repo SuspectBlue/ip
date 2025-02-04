@@ -22,6 +22,12 @@ public class UnmarkCommand extends Command{
     public void execute() throws PelopsIIException {
         this.taskList.unmark(pos);
         this.storage.writeFile(taskList.getSaveData());
-        this.ui.showMessageToUser(UNMARK_MESSAGE + "\n" + this.taskList.getTaskByPosition(pos));
+        this.response = UNMARK_MESSAGE + "\n" + this.taskList.getTaskByPosition(pos);
+        this.ui.showMessageToUser(this.response);
+    }
+
+    @Override
+    public String getResponse() {
+        return this.response;
     }
 }
