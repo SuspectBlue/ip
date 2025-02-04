@@ -1,20 +1,42 @@
-# Pelops II project template
+# Pelops II 
 
-This is a project template for a greenfield Java project. Given below are instructions on how to use it.
+> "Hello from Pelops II. This computer has little space for me. Let me organize the data inside." - Pelops II
 
-## Setting up in Intellij
+Welcome to Pelops II, your task management companion! 
+This application helps you keep track of your _to-dos, deadlines, and events_ with ease.
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## Features
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/PelopsII.java` file, right-click it, and choose `Run PelopsII.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from Pelops II
+Here's a quick rundown of what Pelops II can do:
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+* Add **To-Do** tasks
+* Create tasks with specific **Deadlines** 
+* Schedule **Events** with start and end times.
+* Mark tasks as done or not done ✅
+* Delete unwanted tasks
+* Search for tasks
+
+## How to Use
+
+Follow these steps to get started with Pelops II:
+
+1.  Download the latest release from [source](https://github.com/SuspectBlue/ip).
+2.  Run the application from your terminal.
+3.  Enter commands like: `todo <description>`, `deadline <description> /by <date/time>`, `event <description> /from <start_time> /to <end_time>`, `list`, `mark <index>`, `unmark <index>` and `delete <index>` to manage your tasks.
+
+If you are a Java programmer, you can use it to practice Java too. Here's the main method:
+``` java
+public class Main {
+    public static void main(String[] args) throws IOException {
+        new PelopsII("data").run();
+    }
+}
+```
+## Current Progress
+
+- [X] Tasklist implementation
+- [X] Storage Capabilities
+- [ ] UI/UX Design
+
+### Notes:
+This task management companion is inspired by [Pelops II](https://wikizilla.org/wiki/Pelops_II) from [Godzilla Singular Point](https://godzilla.fandom.com/wiki/Godzilla_Singular_Point). 
