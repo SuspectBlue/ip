@@ -67,4 +67,15 @@ public class PelopsII {
         }
         // System.out.println("Running Java version: " + System.getProperty("java.version"));
     }
+
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parse(input);
+            c.setData(taskList, ui, storageFile);
+            c.execute();
+            return c.getResponse();
+        } catch (PelopsIIException e) {
+            return "Error: " + e.getMessage();
+        }
+    }
 }

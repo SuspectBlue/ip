@@ -40,6 +40,12 @@ public class FindCommand extends Command{
     public void execute() throws PelopsIIException {
         String result = this.taskList.find(keyword);
         StringBuilder sb = new StringBuilder(FIND_TASK_MESSAGE).append("\n").append(result);
+        this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
+    }
+
+    @Override
+    public String getResponse() {
+        return this.response;
     }
 }

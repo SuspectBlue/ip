@@ -16,7 +16,13 @@ public class HelpCommand extends Command {
         sb.append("mark").append("\n");
         sb.append("unmark").append("\n");
         sb.append("delete").append("\n");
+        this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
+    }
+
+    @Override
+    public String getResponse() {
+        return this.response;
     }
     
 }

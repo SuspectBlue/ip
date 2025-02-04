@@ -29,6 +29,12 @@ public class DeleteCommand extends Command{
         StringBuilder sb = new StringBuilder(DELETE_MESSAGE).append("\n")
                                                             .append(deleted).append("\n")
                                                             .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
+    }
+
+    @Override
+    public String getResponse() {
+        return this.response;
     }
 }

@@ -22,6 +22,10 @@ public abstract class Command {
      * The Ui object used for user interface interactions.
      */
     protected Ui ui;
+        /**
+     * The response to send to users
+     */
+    protected String response;
 
     /**
      * Abstract method to execute the command.
@@ -29,6 +33,8 @@ public abstract class Command {
      * @throws PelopsIIException If there is an error during command execution.
      */
     public abstract void execute() throws PelopsIIException;
+
+    public abstract String getResponse();
 
     /**
      * Sets the necessary data for the command to execute.

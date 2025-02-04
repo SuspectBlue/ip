@@ -15,4 +15,9 @@ public class ByeCommand extends Command{
     public void execute() throws PelopsIIException {
         this.ui.showMessageToUser(byeMessage);
     }
+
+    @Override
+    public String getResponse() {
+        return byeMessage;
+    }
 }
