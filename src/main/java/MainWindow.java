@@ -22,8 +22,8 @@ public class MainWindow extends AnchorPane {
 
     private PelopsII pelopsii;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/Mei_Kamino.png"));
+    private Image pelopsiiImage = new Image(this.getClass().getResourceAsStream("/images/Pelops_II.png"));
 
     @FXML
     public void initialize() {
@@ -45,7 +45,7 @@ public class MainWindow extends AnchorPane {
         String response = pelopsii.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getDukeDialog(response, pelopsiiImage)
         );
         userInput.clear();
     }
