@@ -1,7 +1,6 @@
 package pelopsii.task;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a deadline task with a description and a deadline date and time.
@@ -38,19 +37,6 @@ public class Deadline extends Task {
         this.by = by;
     }
 
-
-    /**
-     * Returns a formatted string representation of the deadline date and time.
-     * The format is "d MMM yyyy h:mma" (e.g., "5 Oct 2023 3:30PM").
-     *
-     * @return The formatted deadline date and time string.
-     */
-    public String getByDateString() {
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("d MMM yyyy h:mma");
-        String formattedDateTime = by.format(outputFormatter);
-        return formattedDateTime.toString();
-    }
-
     /**
      * Returns a string representation of the deadline task, including its type,
      * status, description, and the formatted deadline date and time.
@@ -59,7 +45,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + getByDateString() + ")";
+        return "[D]" + super.toString() + " (by: " + DateFormatter.getDateTimeString(by) + ")";
     }
 
      /**
@@ -71,6 +57,6 @@ public class Deadline extends Task {
      */
     @Override
     public String getDataString() {
-        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + getByDateString();
+        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + DateFormatter.getDateTimeString(by);
     }
 }

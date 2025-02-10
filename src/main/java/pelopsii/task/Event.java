@@ -1,5 +1,7 @@
 package pelopsii.task;
 
+import java.time.LocalDateTime;
+
 /**
  * Represents an event task with a description, start time, and end time.
  * Inherits from the Task class.
@@ -9,11 +11,11 @@ public class Event extends Task {
     /**
      * The start time of the event.
      */
-    protected String from;
+    protected LocalDateTime from;
     /**
      * The end time of the event.
      */
-    protected String to;
+    protected LocalDateTime to;
 
     /**
      * Constructs an Event object with the given description, start time, and end time.
@@ -23,7 +25,7 @@ public class Event extends Task {
      * @param from        The start time of the event.
      * @param to          The end time of the event.
      */
-    public Event(String description, String from, String to) {
+    public Event(String description, LocalDateTime from, LocalDateTime to) {
         super(description);
         this.from = from;
         this.to = to;
@@ -37,7 +39,7 @@ public class Event extends Task {
      * @param from        The start time of the event.
      * @param to          The end time of the event.
      */
-    public Event(boolean isDone, String description, String from, String to) {
+    public Event(boolean isDone, String description, LocalDateTime from, LocalDateTime to) {
         super(isDone, description);
         this.from = from;
         this.to = to;
@@ -51,7 +53,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        return "[E]" + super.toString() + " (from: " + DateFormatter.getDateTimeString(from) + " to: " + DateFormatter.getDateTimeString(to) + ")";
     }
 
      /**
@@ -63,6 +65,6 @@ public class Event extends Task {
      */
     @Override
     public String getDataString() {
-        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + from + " | " + to;
+        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + DateFormatter.getDateTimeString(from) + " | " + DateFormatter.getDateTimeString(to);
     }
 }

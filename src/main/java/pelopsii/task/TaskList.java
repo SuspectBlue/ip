@@ -55,7 +55,9 @@ public class TaskList {
                 LocalDateTime dateTime = LocalDateTime.parse(tokens[3], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
                 this.taskList.add(new Deadline(isDone, tokens[2], dateTime));
             } else if (tokens[0].equals("E")) {
-                this.taskList.add(new Event(isDone, tokens[2], tokens[3], tokens[4]));
+                LocalDateTime fromDate = LocalDateTime.parse(tokens[3], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
+                LocalDateTime toDate = LocalDateTime.parse(tokens[4], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
+                this.taskList.add(new Event(isDone, tokens[2], fromDate, toDate));
             }
         }
     }

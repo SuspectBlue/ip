@@ -1,5 +1,6 @@
 package pelopsii.command;
 
+import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 
 /**
@@ -23,10 +24,10 @@ public class FindCommand extends Command{
      * @param input The user input string containing the find command and the keyword.
      * @throws PelopsIIException If the input is missing the keyword or is improperly formatted.
      */
-    public FindCommand(String input) throws PelopsIIException {
+    public FindCommand(String input) throws InvalidCommandException {
         String[] action = input.split("find ");
         if (action.length == 1) {
-            throw new PelopsIIException("Must specify keywords to find. Example find <keyword>");
+            throw new InvalidCommandException("Must specify keywords to find. Example find <keyword>");
         }
         this.keyword = action[1];
     }

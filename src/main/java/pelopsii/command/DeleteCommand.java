@@ -1,5 +1,6 @@
 package pelopsii.command;
 
+import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.Task;
 
@@ -7,18 +8,18 @@ public class DeleteCommand extends Command{
     private int pos;
     private static final String DELETE_MESSAGE = "Noted. I've removed this task:";
 
-    public DeleteCommand(String input) throws PelopsIIException {
+    public DeleteCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length == 1) {
-            throw new PelopsIIException("You must specify an index when deleting a task");
+            throw new InvalidCommandException("You must specify an index when deleting a task");
         }
         if (action.length > 2) {
-            throw new PelopsIIException("You have specified too many parameters for the delete command");
+            throw new InvalidCommandException("You have specified too many parameters for the delete command");
         }
         try {
             pos = Integer.parseInt(action[1]);
         } catch (NumberFormatException e) {
-            throw new PelopsIIException("The position must be a valid number.");
+            throw new InvalidCommandException("The position must be a valid number.");
         }
     }
 

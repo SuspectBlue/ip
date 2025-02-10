@@ -1,5 +1,6 @@
 package pelopsii.command;
 
+import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.ToDo;
 
@@ -8,12 +9,12 @@ public class TodoCommand extends Command {
     private String description;
     private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
 
-    public TodoCommand(String input) throws PelopsIIException {
+    public TodoCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length == 1) {
-            throw new PelopsIIException("ToDo tasks require a description. For example: todo <description>");
+            throw new InvalidCommandException("ToDo tasks require a description. For example: todo <description>");
         }
-        this.description = input.split("todo ")[1];
+        this.description = input.substring(5);
     }
 
     @Override

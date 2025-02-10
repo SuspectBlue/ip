@@ -2,7 +2,9 @@ package pelopsii.command;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
+import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.Deadline;
 
@@ -12,15 +14,29 @@ public class DeadlineCommand extends Command {
     private LocalDateTime dateTime;
     private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
 
-    public DeadlineCommand(String input) throws PelopsIIException {
+    public DeadlineCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length == 1) {
-            throw new PelopsIIException("Deadline tasks must include both a description and a specified deadline time. For example: deadline <description> /by yyyy-MM-dd HHmm");
+            throw new InvalidCommandException("Deadline tasks must include both a description and a specified deadline time. For example: deadline <description> /by yyyy-MM-dd HHmm");
         }
-        String data = input.split("deadline ")[1];
-        this.description = data.split(" /by ")[0];
-        String byDate = data.split(" /by ")[1];
-        this.dateTime = LocalDateTime.parse(byDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+
+        String[] data = input.substring(9).split(" /by ");
+
+        if(data.length != 2) {
+            throw new InvalidCommandException("Missing description or date input");
+        }
+
+        this.description = data[0];
+        String byDate = data[1];
+
+        try {
+            this.dateTime = LocalDateTime.parse(byDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+        } catch (DateTimeParseException e) {
+            throw new InvalidCommandException("Invalid date format. Please use the format yyyy-MM-dd HHmm.");
+        }
+
+
+        
     }
 
     @Override

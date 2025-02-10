@@ -1,20 +1,21 @@
 package pelopsii.command;
 
+import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 
 public class UnmarkCommand extends Command{
     private int pos;
     private static final String UNMARK_MESSAGE = "Ok, I've marked this task as not done yet:";
 
-    public UnmarkCommand(String input) throws PelopsIIException {
+    public UnmarkCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length < 2) {
-            throw new PelopsIIException("You must specify the position of the task to unmark.");
+            throw new InvalidCommandException("You must specify the position of the task to unmark.");
         }
         try {
             pos = Integer.parseInt(action[1]);
         } catch (NumberFormatException e) {
-            throw new PelopsIIException("The position must be a valid number.");
+            throw new InvalidCommandException("The position must be a valid number.");
         }
     }
 
