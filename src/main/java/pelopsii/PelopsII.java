@@ -38,6 +38,7 @@ public class PelopsII {
         try {
             storageFile.load();
             taskList = new TaskList(storageFile.readFile());
+            assert taskList != null : "TaskList should not be null";
         } catch (PelopsIIException e) {
             ui.showLoadingError();
             taskList = new TaskList();
@@ -71,6 +72,7 @@ public class PelopsII {
     public String getResponse(String input) {
         try {
             Command c = Parser.parse(input);
+            assert c != null : "Command should not be null";
             c.setData(taskList, ui, storageFile);
             c.execute();
             return c.getResponse();
