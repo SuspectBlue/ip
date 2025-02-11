@@ -10,6 +10,7 @@ import pelopsii.command.HelpCommand;
 import pelopsii.command.ListCommand;
 import pelopsii.command.MarkCommand;
 import pelopsii.command.TodoCommand;
+import pelopsii.command.UndoCommand;
 import pelopsii.command.UnmarkCommand;
 import pelopsii.exception.PelopsIIException;
 
@@ -55,6 +56,9 @@ public class Parser {
             }
             case "find" -> {
                 return new FindCommand(input);
+            }
+            case "undo" -> {
+                return new UndoCommand();
             }
             default -> {
                 return new HelpCommand();
