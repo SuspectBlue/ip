@@ -63,6 +63,11 @@ public class TaskList {
         }
     }
 
+    public void overwriteData(String data) throws PelopsIIException {
+        this.taskList = new ArrayList<>();
+        loadData(data);
+    }
+
     /**
      * Returns the number of tasks in the list.
      *

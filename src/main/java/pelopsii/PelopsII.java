@@ -2,6 +2,7 @@ package pelopsii;
 import java.io.IOException;
 
 import pelopsii.storage.Storage;
+import pelopsii.storage.UndoTracker;
 import pelopsii.task.TaskList;
 import pelopsii.ui.Ui;
 import pelopsii.parser.Parser;
@@ -19,6 +20,10 @@ public class PelopsII {
      */
     private Storage storageFile;
     /**
+     * The Undo tracker for handling undo operations.
+     */
+    private UndoTracker undoTracker;
+    /**
      * The TaskList object for managing tasks.
      */
     private TaskList taskList;
@@ -35,8 +40,10 @@ public class PelopsII {
     public PelopsII(String filePath) {
         ui = new Ui();
         storageFile = new Storage(filePath);
+        undoTracker = new UndoTracker();
+
         try {
-            storageFile.load();
+            storageFile.load("PelopsII.txt");
             taskList = new TaskList(storageFile.readFile());
             assert taskList != null : "TaskList should not be null";
         } catch (PelopsIIException e) {
@@ -59,7 +66,7 @@ public class PelopsII {
                 String input = ui.readCommand();
                 ui.showLine();
                 Command c = Parser.parse(input);
-                c.setData(taskList, ui, storageFile);
+                c.setData(taskList, ui, storageFile, undoTracker);
                 c.execute();
                 isExit = c.isExit();
             } catch (PelopsIIException e) {
@@ -71,10 +78,14 @@ public class PelopsII {
 
     public String getResponse(String input) {
         try {
+            String prevData = taskList.getSaveData();
             Command c = Parser.parse(input);
             assert c != null : "Command should not be null";
-            c.setData(taskList, ui, storageFile);
+            c.setData(taskList, ui, storageFile, undoTracker);
             c.execute();
+            if(Command.isUndoableCommand(c)) {
+                undoTracker.savePrevState(input, prevData);
+            }
             return c.getResponse();
         } catch (PelopsIIException e) {
             return "Error: " + e.getMessage();

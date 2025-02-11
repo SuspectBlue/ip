@@ -2,6 +2,7 @@ package pelopsii.command;
 
 import pelopsii.exception.PelopsIIException;
 import pelopsii.storage.Storage;
+import pelopsii.storage.UndoTracker;
 import pelopsii.task.TaskList;
 import pelopsii.ui.Ui;
 
@@ -18,6 +19,10 @@ public abstract class Command {
      * The Storage object used for file operations.
      */
     protected Storage storage;
+    /**
+     * The UndoTracker object used for undo operations.
+     */
+    protected UndoTracker undoTracker;
     /**
      * The Ui object used for user interface interactions.
      */
@@ -43,10 +48,11 @@ public abstract class Command {
      * @param ui       The Ui object.
      * @param storage  The Storage object.
      */
-    public void setData(TaskList taskList, Ui ui, Storage storage) {
+    public void setData(TaskList taskList, Ui ui, Storage storage, UndoTracker undoTracker) {
         this.taskList = taskList;
         this.storage = storage;
         this.ui = ui;
+        this.undoTracker = undoTracker;
     }
 
     /**
@@ -57,5 +63,15 @@ public abstract class Command {
      */
     public boolean isExit() {
         return false;
+    }
+
+    public static boolean isUndoableCommand(Command c) {
+        return c instanceof DeadlineCommand || 
+               c instanceof DeleteCommand ||
+               c instanceof EventCommand ||
+               c instanceof MarkCommand ||
+               c instanceof TodoCommand ||
+               c instanceof UnmarkCommand ||
+               c instanceof UndoCommand;
     }
 }

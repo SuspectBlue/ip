@@ -34,7 +34,7 @@ public class Storage {
      * @return The File object representing the loaded or created file.
      * @throws PelopsIIException If there is an error loading or creating the file.
      */
-    public File load() throws PelopsIIException {
+    public File load(String fileName) throws PelopsIIException {
         try {
             File file = new File(filePath);
             if (!file.exists()) {
@@ -42,7 +42,7 @@ public class Storage {
                 if (!directory.exists()) {
                     directory.mkdirs();
                 }
-                file = new File(directory, "PelopsII.txt");
+                file = new File(directory, fileName);
                 if (!file.exists()) {
                     file.createNewFile();
                 }
