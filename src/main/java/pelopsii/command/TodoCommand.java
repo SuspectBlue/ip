@@ -22,9 +22,13 @@ public class TodoCommand extends Command {
         ToDo todo = new ToDo(description);
         this.taskList.addTask(todo);
         this.storage.writeFile(taskList.getSaveData());
-        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE).append("\n")
-                                                            .append(todo).append("\n")
-                                                            .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE)
+            .append("\n")
+            .append(todo)
+            .append("\n")
+            .append("Now you have ")
+            .append(this.taskList.getSize())
+            .append(this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list.");
         this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
     }
