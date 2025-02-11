@@ -44,6 +44,7 @@ public class TaskList {
      * @throws PelopsIIException If the data format is invalid or there's an issue creating tasks.
      */
     private void loadData(String data) throws PelopsIIException {
+        assert taskList != null : "ArrayList should be instantiated";
         String[] tasks = data.split("\n");
         for (String task : tasks) {
             if (task.equals("")) continue;

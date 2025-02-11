@@ -52,7 +52,7 @@ public class CommandTest {
             assertEquals(2, new EventCommand("event"));
             fail();
         } catch (PelopsIIException error) {
-            assertEquals("Event tasks must include a description, event start time and event end time. For example: event <description> /from <start_time> /to <end_time>", error.getMessage());
+            assertEquals("Event tasks must include a description, event start time and event end time. For example: event <description> /from yyyy-MM-dd HHmm /to yyyy-MM-dd HHmm", error.getMessage());
         }
     }
 

@@ -26,6 +26,7 @@ public class DeleteCommand extends Command{
     @Override
     public void execute() throws PelopsIIException {
         Task deleted = this.taskList.deleteTask(pos);
+        assert deleted != null : "Deleted task should not be null";
         this.storage.writeFile(taskList.getSaveData());
         StringBuilder sb = new StringBuilder(DELETE_MESSAGE)
             .append("\n")

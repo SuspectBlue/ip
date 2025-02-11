@@ -19,7 +19,7 @@ public class TaskTest {
 
     @Test
     public void event_task_success() {
-        Assertions.assertEquals("[E][ ] event (from: 5pm to: 7pm)",
+        Assertions.assertEquals("[E][ ] event (from: 30 May 2025 11:00pm to: 31 May 2025 11:00pm)",
                 new Event("event", LocalDateTime.parse("2025-05-30 2300", DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")), LocalDateTime.parse("2025-05-31 2300", DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"))).toString());
     }
 }
