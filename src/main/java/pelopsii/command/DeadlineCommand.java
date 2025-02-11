@@ -44,9 +44,13 @@ public class DeadlineCommand extends Command {
         Deadline deadline = new Deadline(description, dateTime);
         this.taskList.addTask(deadline);
         this.storage.writeFile(taskList.getSaveData());
-        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE).append("\n")
-                                                            .append(deadline).append("\n")
-                                                            .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE)
+            .append("\n")
+            .append(deadline)
+            .append("\n")
+            .append("Now you have ")
+            .append(this.taskList.getSize())
+            .append(this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list.");
         this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
     }

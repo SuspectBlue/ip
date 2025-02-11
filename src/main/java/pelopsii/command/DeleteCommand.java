@@ -28,9 +28,13 @@ public class DeleteCommand extends Command{
         Task deleted = this.taskList.deleteTask(pos);
         assert deleted != null : "Deleted task should not be null";
         this.storage.writeFile(taskList.getSaveData());
-        StringBuilder sb = new StringBuilder(DELETE_MESSAGE).append("\n")
-                                                            .append(deleted).append("\n")
-                                                            .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        StringBuilder sb = new StringBuilder(DELETE_MESSAGE)
+            .append("\n")
+            .append(deleted)
+            .append("\n")
+            .append("Now you have ")
+            .append(this.taskList.getSize())
+            .append(this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list.");
         this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
     }

@@ -48,9 +48,13 @@ public class EventCommand extends Command{
         Event event = new Event(description, fromTime, toTime);
         this.taskList.addTask(event);
         this.storage.writeFile(taskList.getSaveData());
-        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE).append("\n")
-                                                            .append(event).append("\n")
-                                                            .append("Now you have " + this.taskList.getSize() + (this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list."));
+        StringBuilder sb = new StringBuilder(ADD_TASK_MESSAGE)
+            .append("\n")
+            .append(event)
+            .append("\n")
+            .append("Now you have ")
+            .append(this.taskList.getSize())
+            .append(this.taskList.getSize() == 1 ? " task in the list." : " tasks in the list.");
         this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
     }

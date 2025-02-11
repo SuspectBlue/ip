@@ -4,7 +4,7 @@ import pelopsii.exception.PelopsIIException;
 
 public class ByeCommand extends Command{
 
-    private final static String byeMessage = "Bye. Hope to see you again soon!";
+    private final static String BYE_MESSAGE = "Bye. Hope to see you again soon!";
     
     @Override
     public boolean isExit() {
@@ -13,11 +13,11 @@ public class ByeCommand extends Command{
 
     @Override
     public void execute() throws PelopsIIException {
-        this.ui.showMessageToUser(byeMessage);
+        this.ui.showMessageToUser(BYE_MESSAGE);
     }
 
     @Override
     public String getResponse() {
-        return byeMessage;
+        return BYE_MESSAGE;
     }
 }
