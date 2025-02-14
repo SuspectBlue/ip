@@ -13,7 +13,7 @@ public class DateFormatter {
     public static String getDateTimeString(LocalDateTime dateTime) {
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("d MMM yyyy h:mma");
         String formattedDateTime = dateTime.format(outputFormatter);
-        return formattedDateTime.toString();
+        return formattedDateTime.toString().replace("am", "AM").replace("pm", "PM");
     }
 
 }
