@@ -16,6 +16,7 @@ public class HelpCommand extends Command {
         sb.append("mark").append("\n");
         sb.append("unmark").append("\n");
         sb.append("delete").append("\n");
+        sb.append("undo");
         this.response = sb.toString();
         this.ui.showMessageToUser(sb.toString());
     }
