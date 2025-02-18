@@ -73,7 +73,6 @@ public class PelopsII {
                 System.out.println(e.getMessage());
             }
         }
-        // System.out.println("Running Java version: " + System.getProperty("java.version"));
     }
 
     public String getResponse(String input) {
