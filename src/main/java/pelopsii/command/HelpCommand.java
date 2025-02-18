@@ -7,7 +7,7 @@ public class HelpCommand extends Command {
     @Override
     public void execute() throws PelopsIIException {
         StringBuilder sb = new StringBuilder();
-        sb.append("Command unrecognised. Please use one of the following commands:").append("\n");
+        sb.append("Please use one of the following commands:").append("\n");
         sb.append("bye").append("\n");
         sb.append("list").append("\n");
         sb.append("todo").append("\n");
