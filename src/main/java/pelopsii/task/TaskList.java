@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import pelopsii.task.DateFormatter;
+
 import pelopsii.exception.PelopsIIException;
 
 /**
@@ -53,11 +55,11 @@ public class TaskList {
             if (tokens[0].equals("T")) {
                 this.taskList.add(new ToDo(isDone, tokens[2]));
             } else if (tokens[0].equals("D")) {
-                LocalDateTime dateTime = LocalDateTime.parse(tokens[3], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
+                LocalDateTime dateTime = LocalDateTime.parse(DateFormatter.getStoringDate(tokens[3]), DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
                 this.taskList.add(new Deadline(isDone, tokens[2], dateTime));
             } else if (tokens[0].equals("E")) {
-                LocalDateTime fromDate = LocalDateTime.parse(tokens[3], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
-                LocalDateTime toDate = LocalDateTime.parse(tokens[4], DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
+                LocalDateTime fromDate = LocalDateTime.parse(DateFormatter.getStoringDate(tokens[3]), DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
+                LocalDateTime toDate = LocalDateTime.parse(DateFormatter.getStoringDate(tokens[4]), DateTimeFormatter.ofPattern("d MMM yyyy h:mma"));
                 this.taskList.add(new Event(isDone, tokens[2], fromDate, toDate));
             }
         }

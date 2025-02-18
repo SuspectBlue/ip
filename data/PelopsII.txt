@@ -1,4 +1,6 @@
-D | 1 | buy bread | 24 Feb 2025 11:44pm
-E | 1 | birthday | 23 Jan 2025 4:00pm | 23 Jan 2025 4:00pm
+D | 1 | buy bread | 24 Feb 2025 11:44PM
+E | 1 | birthday | 23 Jan 2025 4:00PM | 23 Jan 2025 4:00PM
 T | 1 | eat fish
-D | 0 | assignment | 25 Mar 2025 3:00pm
+D | 0 | assignment | 25 Mar 2025 3:00PM
+D | 1 | buy fish | 3 Apr 2025 7:50PM
+E | 0 | another birthday | 2 Jan 2025 7:00PM | 3 Jan 2025 2:00PM

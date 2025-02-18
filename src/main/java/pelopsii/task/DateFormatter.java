@@ -16,4 +16,8 @@ public class DateFormatter {
         return formattedDateTime.toString().replace("am", "AM").replace("pm", "PM");
     }
 
+    public static String getStoringDate(String dateTimeString) {
+        return dateTimeString.replace("AM", "am").replace("PM", "pm");
+    }
+
 }
