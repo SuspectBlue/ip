@@ -145,3 +145,6 @@ Your Updated Task List:
 **Q3:** What if I type in an invalid command?
 
 **Ans:** Pelops II will prompt you will the list of available commands for you to use.
+
+# Note
+This task management companion is inspired by [Pelops II](https://wikizilla.org/wiki/Pelops_II) from [Godzilla Singular Point](https://godzilla.fandom.com/wiki/Godzilla_Singular_Point).
