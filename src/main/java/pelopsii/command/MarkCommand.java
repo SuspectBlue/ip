@@ -3,10 +3,27 @@ package pelopsii.command;
 import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 
+/**
+ * Represents a command to mark a task as completed by its index in the task list.
+ * The input specifies the index of the task to be marked as done. 
+ * If the input is invalid or the index is not a valid number, an InvalidCommandException is thrown.
+ * 
+ * Example usage:
+ * <pre>
+ * MarkCommand markCommand = new MarkCommand("mark 2");
+ * </pre>
+ */
 public class MarkCommand extends Command {
     private int pos;
     private static final String MARK_MESSAGE = "Nice! I've marked this task as done:";
 
+    /**
+     * Constructs a MarkCommand by parsing the user input to extract the task index to mark as completed.
+     * The input must specify a valid task index.
+     * 
+     * @param input The user input containing the mark command and task index.
+     * @throws InvalidCommandException If the input format is incorrect or the task index is not a valid number.
+     */
     public MarkCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length < 2) {

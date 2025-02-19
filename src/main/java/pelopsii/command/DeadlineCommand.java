@@ -8,12 +8,32 @@ import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.Deadline;
 
+/**
+ * Represents a command to create a deadline task, which includes a description and a deadline time.
+ * The user input is parsed to extract the description and the deadline time, ensuring the format is correct.
+ * The deadline time must be specified in the format "yyyy-MM-dd HHmm".
+ * If the input is malformed or the date format is incorrect, an InvalidCommandException is thrown.
+ * 
+ * This command is responsible for storing the task description and its deadline, and handling errors related 
+ * to input validation and date parsing.
+ * 
+ * Example usage:
+ * <pre>
+ * DeadlineCommand deadlineCommand = new DeadlineCommand("deadline Submit report /by 2025-02-20 1800");
+ * </pre>
+ */
 public class DeadlineCommand extends Command {
 
     private String description;
     private LocalDateTime dateTime;
     private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
 
+    /**
+     * Constructs a DeadlineCommand by parsing the user input.
+     *
+     * @param input The user input containing the description and deadline.
+     * @throws InvalidCommandException If the input format is incorrect.
+     */
     public DeadlineCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length == 1) {
@@ -34,8 +54,6 @@ public class DeadlineCommand extends Command {
         } catch (DateTimeParseException e) {
             throw new InvalidCommandException("Invalid date format. Please use the format yyyy-MM-dd HHmm.");
         }
-
-
         
     }
 

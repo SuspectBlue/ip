@@ -160,6 +160,13 @@ public class TaskList {
         return sb.toString();
     }
 
+    /**
+     * Generates a string representation of all tasks in the task list.
+     * Each task's data string is appended to a {@link StringBuilder},
+     * with each entry separated by a newline.
+     *
+     * @return A formatted string containing data from all tasks.
+     */
     public String getSaveData() {
         StringBuilder sb = new StringBuilder();
         for(Task task : taskList) {

@@ -65,13 +65,19 @@ public abstract class Command {
         return false;
     }
 
+    /**
+     * Checks whether a given command is undoable.
+     *
+     * @param c The command to be checked.
+     * @return {@code true} if the command is undoable, {@code false} otherwise.
+     */
     public static boolean isUndoableCommand(Command c) {
         return c instanceof DeadlineCommand || 
-               c instanceof DeleteCommand ||
-               c instanceof EventCommand ||
-               c instanceof MarkCommand ||
-               c instanceof TodoCommand ||
-               c instanceof UnmarkCommand ||
-               c instanceof UndoCommand;
+            c instanceof DeleteCommand ||
+            c instanceof EventCommand ||
+            c instanceof MarkCommand ||
+            c instanceof TodoCommand ||
+            c instanceof UnmarkCommand ||
+            c instanceof UndoCommand;
     }
 }

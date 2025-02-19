@@ -4,10 +4,31 @@ import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.Task;
 
+/**
+ * Represents a command to delete a task by its index in the task list.
+ * The command takes an index as input and removes the task at that position.
+ * The input should specify a valid index, and errors are thrown if the index is invalid or the input is malformed.
+ * 
+ * This command performs input validation to ensure the correct number of arguments are provided, 
+ * and that the specified index is a valid number. If the input does not meet the expected format, 
+ * an InvalidCommandException is thrown.
+ * 
+ * Example usage:
+ * <pre>
+ * DeleteCommand deleteCommand = new DeleteCommand("delete 2");
+ * </pre>
+ */
 public class DeleteCommand extends Command{
     private int pos;
     private static final String DELETE_MESSAGE = "Noted. I've removed this task:";
 
+    /**
+     * Constructs a DeleteCommand by parsing the user input to extract the task index.
+     * The input must contain a single index to specify the task to be deleted.
+     * 
+     * @param input The user input containing the delete command and index.
+     * @throws InvalidCommandException If the input format is incorrect or the index is not a valid number.
+     */
     public DeleteCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length == 1) {

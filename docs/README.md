@@ -135,10 +135,13 @@ Your Updated Task List:
 
 # FAQ
 **Q1:** Are commands case sensitive?
+
 **Ans:** No commands are not case sensitive. `list` and `LiSt` will both recognized by Pelops II
 
 **Q2:** Do I need to save my data in my task list?
+
 **Ans:** Task list data are saved in your local storage automatically after any command that changes the data. There is no need to save the data manually.
 
 **Q3:** What if I type in an invalid command?
+
 **Ans:** Pelops II will prompt you will the list of available commands for you to use.

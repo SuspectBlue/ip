@@ -53,7 +53,7 @@ public class PelopsII {
     }
 
     /**
-     * Runs the Pelops II application, handling user input and executing commands.
+     * Runs the Pelops II Command Line Interface, handling user input and executing commands.
      *
      * @throws IOException If an I/O error occurs during command processing.
      */
@@ -75,6 +75,9 @@ public class PelopsII {
         }
     }
 
+    /**
+     * Runs the Pelops II UI application, handling user input and executing commands.
+     */
     public String getResponse(String input) {
         try {
             String prevData = taskList.getSaveData();

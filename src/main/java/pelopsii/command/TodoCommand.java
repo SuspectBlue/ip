@@ -4,11 +4,28 @@ import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.ToDo;
 
+/**
+ * Represents a command to create a ToDo task with a description.
+ * The user input is parsed to extract the description of the ToDo task. 
+ * If the input does not include a description, an InvalidCommandException is thrown.
+ * 
+ * Example usage:
+ * <pre>
+ * TodoCommand todoCommand = new TodoCommand("todo Buy groceries");
+ * </pre>
+ */
 public class TodoCommand extends Command {
 
     private String description;
     private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
 
+    /**
+     * Constructs a TodoCommand by parsing the user input to extract the task description.
+     * The input must follow the format: "todo <description>", where the description specifies the task.
+     * 
+     * @param input The user input containing the todo command and task description.
+     * @throws InvalidCommandException If the input format is incorrect or missing a description.
+     */
     public TodoCommand(String input) throws InvalidCommandException {
         String[] action = input.split(" ");
         if (action.length == 1) {

@@ -8,12 +8,31 @@ import pelopsii.exception.InvalidCommandException;
 import pelopsii.exception.PelopsIIException;
 import pelopsii.task.Event;
 
+/**
+ * Represents a command to create an event task, which includes a description and both a start and end time.
+ * The user input is parsed to extract the description, start time, and end time, ensuring the correct format.
+ * The start and end times must be specified in the format "yyyy-MM-dd HHmm".
+ * If the input is malformed or the times are invalid (e.g., end time before start time), an InvalidCommandException is thrown.
+ * 
+ * Example usage:
+ * <pre>
+ * EventCommand eventCommand = new EventCommand("event Meeting /from 2025-02-20 1400 /to 2025-02-20 1600");
+ * </pre>
+ */
 public class EventCommand extends Command{
     private String description;
     private LocalDateTime fromTime;
     private LocalDateTime toTime;
     private static final String ADD_TASK_MESSAGE = "Got it. I've added this task:";
 
+    /**
+     * Constructs an EventCommand by parsing the user input to extract the description, start time, and end time.
+     * The input must follow the format: "event <description> /from yyyy-MM-dd HHmm /to yyyy-MM-dd HHmm".
+     * The start time must be before the end time, and both must be in the correct date-time format.
+     * 
+     * @param input The user input containing the event description, start time, and end time.
+     * @throws InvalidCommandException If the input format is incorrect, the date format is invalid, or the start time is after the end time.
+     */
     public EventCommand(String input) throws InvalidCommandException {
         System.out.println(input);
         String[] action = input.split(" ");
