@@ -33,9 +33,14 @@ public abstract class Command {
     protected String response;
 
     /**
-     * Abstract method to execute the command.
-     *
-     * @throws PelopsIIException If there is an error during command execution.
+     * Abstract method to execute the command. This method will be implemented by concrete command classes
+     * to define specific behavior when the command is executed.
+     * It typically involves interacting with the task list, storage and ui
+     * to perform the desired action.
+     * 
+     * The method may throw exceptions if the command execution encounters an error, such as invalid data or system failure.
+     * 
+     * @throws PelopsIIException If an error occurs during the execution of the command.
      */
     public abstract void execute() throws PelopsIIException;
 
