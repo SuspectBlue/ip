@@ -16,7 +16,7 @@ public class ListCommand extends Command {
 
     @Override
     public String getResponse() {
-        return this.taskList.toString();
+        return this.taskList.getSize() != 0 ? this.taskList.toString() : "Your task list is empty";
     }
     
 }
