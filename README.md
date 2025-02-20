@@ -13,12 +13,13 @@ Command Quick Guide:
 ```
 todo     | todo <description>
 deadline | deadline <description> /by <date>
-event    | event <description> /by event <description> /from <start_date> /to <end_date>
+event    | event <description> /from <start_date> /to <end_date>
 list     | list
 mark     | mark <index>
 unmark   | unmark <index>
 delete   | delete <index>
 undo     | undo
+find     | find <keyword>
 ```
 ## Adding a todo task: ```todo```
 Adds a todo task to the task list
@@ -132,6 +133,15 @@ Your Updated Task List:
 2. [E][ ] birthday party (from: 23 Jan 2025 4:00PM to: 23 Jan 2025 10:00PM)
 3. [T][ ] do homework
 ```
+
+## Finding a task: ```find```
+Finds relevant tasks that contains the keyword in the description
+
+Format: `find <keyword>`
+
+Examples:
+ - `find birthday`
+ - `find book`
 
 # FAQ
 **Q1:** Are commands case sensitive?
