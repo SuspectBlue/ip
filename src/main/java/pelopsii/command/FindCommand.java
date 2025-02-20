@@ -26,7 +26,7 @@ public class FindCommand extends Command{
      */
     public FindCommand(String input) throws InvalidCommandException {
         String[] action = input.split("find ");
-        if (action.length == 1) {
+        if (action.length <= 1) {
             throw new InvalidCommandException("Must specify keywords to find. Example find <keyword>");
         }
         this.keyword = action[1];
